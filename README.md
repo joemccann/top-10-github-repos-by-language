@@ -4,8 +4,6 @@ A wee bit of screen scraping to get the latest numbers on top 10 starred program
 
 ## Installation and Usage
 
-```npm i```
-
 ```node fetch```
 
 Now check your terminal.
