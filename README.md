@@ -8,7 +8,7 @@ A wee bit of screen scraping to get the latest numbers on top 10 starred program
 
 ```node fetch```
 
-Now check your console
+Now check your terminal.
 
 ## License
 
