@@ -4,7 +4,6 @@ var Footer = require('./components/Footer.react');
 var Header = require('./components/Header.react');
 var MainSection = require('./components/MainSection.react');
 var React = require('react');
-var GHStore = require('./stores/GHStore');
 
 
 /**
@@ -12,7 +11,7 @@ var GHStore = require('./stores/GHStore');
  */
 function getGithubOutputState() {
   return {
-    recentData: GHStore.getRecentData(),
+    recentData: null,
   };
 }
 
