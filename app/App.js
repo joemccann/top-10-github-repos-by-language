@@ -1,40 +1,56 @@
 /** @jsx React.DOM */
+
+var Footer = require('./components/Footer.react');
+var Header = require('./components/Header.react');
+var MainSection = require('./components/MainSection.react');
 var React = require('react');
+var GHStore = require('./stores/GHStore');
 
-function computeBallmerPeak(x) {
-  // see: http://ask.metafilter.com/76859/Make-a-function-of-this-graph-Thats-like-an-antigraph
-  x = x * 100;
-  return (
-    1-1/(1+Math.exp(-(x-6)))*.5 + Math.exp(-Math.pow(Math.abs(x-10), 2)*10)
-  ) / 1.6;
-}
 
-function percentage(x) {
-  return isNaN(x) ? 'N/A' : (100 - Math.round(x * 100)) + '%';
+/**
+ * Retrieve the current Github data from the Github Store -- not implemented yet
+ */
+function getGithubOutputState() {
+  return {
+    recentData: GHStore.getRecentData(),
+  };
 }
 
 var App = React.createClass({
+
+/*
   getInitialState: function() {
-    return {bac: 0};
+    return getGithubOutputState();
   },
-  handleChange: function(event) {
-    this.setState({bac: event.target.value})
+
+  componentDidMount: function() {
+    GHStore.addChangeListener(this._onChange);
   },
+
+  componentWillUnmount: function() {
+    GHStore.removeChangeListener(this._onChange);
+  },
+
+*/
+
+  /**
+   * @return {object}
+   */
   render: function() {
-    var pct = percentage(computeBallmerPeak(this.state.bac));
-    return (
+  	return (
       <div>
-        <img src="http://imgs.xkcd.com/comics/ballmer_peak.png" />
-        <p>Credit due to <a href="http://xkcd.com/323/">xkcd</a>.</p>
-        <h4>Compute your Ballmer Peak:</h4>
-        <p>
-          If your BAC is{' '}
-          <input type="text" onChange={this.handleChange} value={this.state.bac} />
-          {', '}then <b>{pct}</b> of your lines of code will be bug free.
-        </p>
+        <Header />
+        <MainSection />
+        <Footer />
       </div>
-    );
-  }
+  	);
+  },
+
+  /**
+   * Event handler for 'change' events coming from the GHStore -- not implemented yet
+   */
+  _onChange: function(){ console.warn('not implemented yet')}
+
 });
 
 	
