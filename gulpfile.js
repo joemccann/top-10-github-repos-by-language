@@ -156,7 +156,7 @@ var fetchTask = function (options) {
     fetcher(function(err,data){
       if(err) return console.error(err)
       writeFile(JSON.stringify(data), options.path)
-      console.dir(data)
+      // console.dir(data)
     })
 
   };
@@ -180,13 +180,13 @@ gulp.task('default', function () {
   browserifyTask({
     development: true,
     src: './app/main.js',
-    dest: './dist'
+    dest: './build'
   });
   
   cssTask({
     development: true,
     src: './styles/**/*.css',
-    dest: './dist'
+    dest: './build'
   });
 
 });
@@ -206,7 +206,7 @@ gulp.task('deploy', function () {
   });
 
   fetchTask({
-    path: './build/github_output.json'
+    path: './dist/github_output.json'
   })
 
 });
