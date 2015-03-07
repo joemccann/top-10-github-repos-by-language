@@ -17,20 +17,22 @@ function getGithubOutputState() {
 
 var App = React.createClass({
 
-/*
-  getInitialState: function() {
-    return getGithubOutputState();
-  },
-
-  componentDidMount: function() {
-    GHStore.addChangeListener(this._onChange);
-  },
-
-  componentWillUnmount: function() {
-    GHStore.removeChangeListener(this._onChange);
-  },
-
-*/
+	loadNotificationsFromServer: function() {
+	  $.ajax({
+	    url: this.props.url,
+	    dataType: 'json',
+	    success: function(data) {
+	      this.setState({data: data});
+	      console.dir(this.state);
+	    }.bind(this)
+	  });
+	},
+	getInitialState: function() {
+	  return {data: {}};
+	},
+	componentWillMount: function() {
+	  this.loadNotificationsFromServer();
+	},
 
   /**
    * @return {object}

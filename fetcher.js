@@ -11,7 +11,9 @@ function fetcher(cb){
 
 		if(err) return cb(err)
 
-		cb && cb( _crawlDOMLangs(data) ) // yolo
+		var d = _crawlDOMLangs(data)	
+
+		cb && cb(null, d ) // yolo
 
 	})
 }

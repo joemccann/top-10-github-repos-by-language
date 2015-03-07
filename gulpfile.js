@@ -16,6 +16,7 @@ var livereload = require('gulp-livereload');
 var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 
 var fetcher = require('./fetcher')
+var fs = require('fs');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -149,14 +150,13 @@ var cssTask = function (options) {
 
 var fetchTask = function (options) {
   var run = function () {
-    console.log(arguments);
     console.log('Running Fetcher...');
 
-    // using request under the hood
+    // // using request under the hood
     fetcher(function(err,data){
       if(err) return console.error(err)
+      writeFile(JSON.stringify(data), options.path)
       console.dir(data)
-      // write to a file?
     })
 
   };
@@ -164,23 +164,30 @@ var fetchTask = function (options) {
 
 }
 
+function writeFile(data, path){
+  var wstream = fs.createWriteStream(path);
+  wstream.write(data);
+  wstream.end();
+}
 
 // Starts our development workflow
 gulp.task('default', function () {
+  
+  fetchTask({
+    path: './build/github_output.json'
+  })
 
   browserifyTask({
     development: true,
     src: './app/main.js',
-    dest: './build'
+    dest: './dist'
   });
   
   cssTask({
     development: true,
     src: './styles/**/*.css',
-    dest: './build'
+    dest: './dist'
   });
-
-  fetchTask()
 
 });
 
@@ -198,7 +205,9 @@ gulp.task('deploy', function () {
     dest: './dist'
   });
 
-  fetchTask()
+  fetchTask({
+    path: './build/github_output.json'
+  })
 
 });
 
