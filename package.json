@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prestart": "linklocal",
-    "start": "npm ex @ns/server npm start"
+    "start": "GIT_SHA=$(git rev-parse HEAD) npm ex @ns/server npm start"
   },
   "devDependencies": {
     "browserify": "^6.2.0",

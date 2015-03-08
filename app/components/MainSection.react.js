@@ -1,6 +1,7 @@
 var React = require('react')
 var ReactPropTypes = React.PropTypes
 var LanguageListItem = require('./LanguageListItem.react')
+var RefreshButton = require('./RefreshButton.react')
 
 var MainSection = React.createClass({
 
@@ -26,7 +27,11 @@ var MainSection = React.createClass({
 
     return (
       <section id="main">
-      	<ul className="repos-list">{content}</ul>
+      	<ul className="repos-list">
+      		{content}
+      		<RefreshButton />
+      	</ul>
+      	
       </section>
     )
   }

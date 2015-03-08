@@ -8,7 +8,7 @@ const uglify = require('gulp-uglify')
 const streamify = require('gulp-streamify')
 const notify = require('gulp-notify')
 const concat = require('gulp-concat')
-const cssmin = require('gulp-cssmin';
+const cssmin = require('gulp-cssmin')
 const gutil = require('gulp-util')
 const shell = require('gulp-shell')
 const glob = require('glob')
@@ -34,12 +34,12 @@ var browserifyTask = function (options) {
 		cache: {}, 
     packageCache: {}, 
     fullPaths: options.development // Requirement of watchify
-	})
+	});
 
 	// We set our dependencies as externals on our app bundler when developing		
-	(options.development ? dependencies : []).forEach(function(dep) {
+	(options.development ? dependencies : []).forEach(function(dep){
 		appBundler.external(dep);
-	})
+	});
 
   // The rebundle process
   var rebundle = function(){
@@ -136,7 +136,7 @@ var browserifyTask = function (options) {
   
 }
 
-var cssTask = function (options = {}) {
+var cssTask = function (options) {
     if (options.development) {
       var run = function () {
         var start = new Date();
@@ -158,7 +158,7 @@ var cssTask = function (options = {}) {
     }
 }
 
-var fetchTask = function(options = {}){
+var fetchTask = function(options){
 
     console.log('Running Fetcher...')
 

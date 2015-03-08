@@ -14,8 +14,7 @@ h1{
 	text-align: center;
 }
 
-
-ul {
+ul{
   list-style-type: none;
   margin: 2%;
   padding: 0;
@@ -25,9 +24,15 @@ li {
   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
   border-bottom: 1px solid #ccc;
 }
- 
-li:last-child {
+
+li:last-child{
   border: none;
+}
+
+ 
+ul > button {
+  border: 2px dotted #dad;
+  margin-top: 2%
 }
  
 footer{
