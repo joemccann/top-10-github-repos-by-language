@@ -1,0 +1,13 @@
+{
+  "name": "@ns/server",
+  "version": "1.0.0",
+  "bin": {
+    "ns-server": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "chalk": "^0.5.1"
+  }
+}

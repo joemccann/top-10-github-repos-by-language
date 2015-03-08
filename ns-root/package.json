@@ -1,0 +1,18 @@
+{
+  "name": "@ns/root",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test | tap-spec"
+  },
+  "dependencies": {
+    "mothership": "^0.3.0"
+  },
+  "devDependencies": {
+    "tap-spec": "^2.1.2",
+    "tape": "^3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joemccann/top-10-github-repos-by-language.git"
+  }
+}

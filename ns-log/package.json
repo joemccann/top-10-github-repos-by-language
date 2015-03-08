@@ -1,0 +1,8 @@
+{
+  "name": "@ns/log",
+  "version": "1.0.0",
+  "description": "Logging module",
+  "dependencies": {
+    "bole": "^2.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@ns/router",
+  "version": "1.0.0",
+  "dependencies": {
+    "course": "0.0.1",
+    "node-uuid": "^1.4.2",
+    "st": "git://github.com/hughsk/st#extensions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joemccann/top-10-github-repos-by-language.git"
+  }
+}
