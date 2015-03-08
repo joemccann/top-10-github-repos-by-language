@@ -1,22 +1,21 @@
-const gulp = require('gulp');
-const source = require('vinyl-source-stream'); // Used to stream bundle for further handling
-const browserify = require('browserify');
-const watchify = require('watchify');
-const reactify = require('reactify'); 
-const gulpif = require('gulp-if');
-const uglify = require('gulp-uglify');
-const streamify = require('gulp-streamify');
-const notify = require('gulp-notify');
-const concat = require('gulp-concat');
-const cssmin = require('gulp-cssmin');
-const gutil = require('gulp-util');
-const shell = require('gulp-shell');
-const glob = require('glob');
-const livereload = require('gulp-livereload');
-const jasminePhantomJs = require('gulp-jasmine2-phantomjs');
-
+const gulp = require('gulp')
+const source = require('vinyl-source-stream')
+const browserify = require('browserify')
+const watchify = require('watchify')
+const reactify = require('reactify') 
+const gulpif = require('gulp-if')
+const uglify = require('gulp-uglify')
+const streamify = require('gulp-streamify')
+const notify = require('gulp-notify')
+const concat = require('gulp-concat')
+const cssmin = require('gulp-cssmin';
+const gutil = require('gulp-util')
+const shell = require('gulp-shell')
+const glob = require('glob')
+const livereload = require('gulp-livereload')
+const jasminePhantomJs = require('gulp-jasmine2-phantomjs')
 const fetcher = require('./fetcher')
-const fs = require('fs');
+const fs = require('fs')
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -32,28 +31,33 @@ var browserifyTask = function (options) {
 		entries: [options.src], // Only need initial file, browserify finds the rest
    	transform: [reactify], // We want to convert JSX to normal javascript
 		debug: options.development, // Gives us sourcemapping
-		cache: {}, packageCache: {}, fullPaths: options.development // Requirement of watchify
-	});
+		cache: {}, 
+    packageCache: {}, 
+    fullPaths: options.development // Requirement of watchify
+	})
 
 	// We set our dependencies as externals on our app bundler when developing		
-	(options.development ? dependencies : []).forEach(function (dep) {
+	(options.development ? dependencies : []).forEach(function(dep) {
 		appBundler.external(dep);
-	});
+	})
 
   // The rebundle process
-  var rebundle = function () {
-    var start = Date.now();
-    console.log('Building APP bundle');
+  var rebundle = function(){
+
+    var start = Date.now()
+
+    console.log('Building APP bundle')
+
     appBundler.bundle()
       .on('error', gutil.log)
       .pipe(source('main.js'))
       .pipe(gulpif(!options.development, streamify(uglify())))
       .pipe(gulp.dest(options.dest))
       .pipe(gulpif(options.development, livereload()))
-      .pipe(notify(function () {
+      .pipe(notify(function(){
         console.log('APP bundle built in ' + (Date.now() - start) + 'ms');
-      }));
-  };
+      }))
+  } // end rebundle definition
 
   // Fire up Watchify when developing
   if (options.development) {
@@ -61,42 +65,49 @@ var browserifyTask = function (options) {
     appBundler.on('update', rebundle);
   }
       
-  rebundle();
+  // Run it at least once...
+  rebundle()
 
   // We create a separate bundle for our dependencies as they
   // should not rebundle on file changes. This only happens when
-  // we develop. When deploying the dependencies will be included 
+  // we develop. When deploying, the dependencies will be included 
   // in the application bundle
   if (options.development) {
 
-  	var testFiles = glob.sync('./specs/**/*-spec.js');
+  	var testFiles = glob.sync('./specs/**/*-spec.js')
+
 		var testBundler = browserify({
 			entries: testFiles,
 			debug: true, // Gives us sourcemapping
 			transform: [reactify],
-			cache: {}, packageCache: {}, fullPaths: true // Requirement of watchify
-		});
+			cache: {}, 
+      packageCache: {}, 
+      fullPaths: true // Requirement of watchify
+		})
 
-		dependencies.forEach(function (dep) {
-			testBundler.external(dep);
-		});
+		dependencies.forEach(function(dep){
+			testBundler.external(dep)
+		})
 
   	var rebundleTests = function () {
-  		var start = Date.now();
-  		console.log('Building TEST bundle');
-  		testBundler.bundle()
+  		
+      var start = Date.now()
+
+  		console.log('Building TEST bundle')
+  		
+      testBundler.bundle()
       .on('error', gutil.log)
 	      .pipe(source('specs.js'))
 	      .pipe(gulp.dest(options.dest))
 	      .pipe(livereload())
 	      .pipe(notify(function () {
 	        console.log('TEST bundle built in ' + (Date.now() - start) + 'ms');
-	      }));
-  	};
+	      }))
+  	}
 
-    testBundler = watchify(testBundler);
-    testBundler.on('update', rebundleTests);
-    rebundleTests();
+    testBundler = watchify(testBundler)
+    testBundler.on('update', rebundleTests)
+    rebundleTests()
 
     // Remove react-addons when deploying, as it is only for
     // testing
@@ -111,24 +122,23 @@ var browserifyTask = function (options) {
     
     // Run the vendor bundle
     var start = new Date();
-    console.log('Building VENDORS bundle');
+    console.log('Building VENDORS bundle')
     vendorsBundler.bundle()
       .on('error', gutil.log)
       .pipe(source('vendors.js'))
       .pipe(gulpif(!options.development, streamify(uglify())))
       .pipe(gulp.dest(options.dest))
       .pipe(notify(function () {
-        console.log('VENDORS bundle built in ' + (Date.now() - start) + 'ms');
-      }));
+        console.log('VENDORS bundle built in ' + (Date.now() - start) + 'ms')
+      }))
     
   }
   
 }
 
-var cssTask = function (options) {
+var cssTask = function (options = {}) {
     if (options.development) {
       var run = function () {
-        console.log(arguments);
         var start = new Date();
         console.log('Building CSS bundle');
         gulp.src(options.src)
@@ -136,7 +146,7 @@ var cssTask = function (options) {
           .pipe(gulp.dest(options.dest))
           .pipe(notify(function () {
             console.log('CSS bundle built in ' + (Date.now() - start) + 'ms');
-          }));
+          }))
       };
       run();
       gulp.watch(options.src, run);
@@ -148,26 +158,25 @@ var cssTask = function (options) {
     }
 }
 
-var fetchTask = function (options) {
-  var run = function () {
-    console.log('Running Fetcher...');
+var fetchTask = function(options = {}){
 
-    // // using request under the hood
-    fetcher(function(err,data){
+    console.log('Running Fetcher...')
+
+    // Using request under the hood...
+    fetcher(function fetcherCallback(err,data){
       if(err) return console.error(err)
       writeFile(JSON.stringify(data), options.path)
       // console.dir(data)
     })
 
-  };
-  run();
+  }
 
-}
 
+// Helper to write github output file...
 function writeFile(data, path){
-  var wstream = fs.createWriteStream(path);
-  wstream.write(data);
-  wstream.end();
+  var wstream = fs.createWriteStream(path)
+  wstream.write(data)
+  wstream.end()
 }
 
 // Starts our development workflow
@@ -209,8 +218,8 @@ gulp.task('deploy', function () {
     path: './dist/github_output.json'
   })
 
-});
+})
 
-gulp.task('test', function () {
-    return gulp.src('./build/testrunner-phantomjs.html').pipe(jasminePhantomJs());
-});
+gulp.task('test', function(){
+    return gulp.src('./build/testrunner-phantomjs.html').pipe(jasminePhantomJs())
+})
