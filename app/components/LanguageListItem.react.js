@@ -10,7 +10,7 @@ var LanguageListItem = React.createClass({
 
     return (
       <li className='languageListItem'>
-				{lli.language} : {lli.count}
+				{lli.language}: {lli.count}
  			</li>
     )
   }

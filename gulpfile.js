@@ -1,22 +1,22 @@
-var gulp = require('gulp');
-var source = require('vinyl-source-stream'); // Used to stream bundle for further handling
-var browserify = require('browserify');
-var watchify = require('watchify');
-var reactify = require('reactify'); 
-var gulpif = require('gulp-if');
-var uglify = require('gulp-uglify');
-var streamify = require('gulp-streamify');
-var notify = require('gulp-notify');
-var concat = require('gulp-concat');
-var cssmin = require('gulp-cssmin');
-var gutil = require('gulp-util');
-var shell = require('gulp-shell');
-var glob = require('glob');
-var livereload = require('gulp-livereload');
-var jasminePhantomJs = require('gulp-jasmine2-phantomjs');
+const gulp = require('gulp');
+const source = require('vinyl-source-stream'); // Used to stream bundle for further handling
+const browserify = require('browserify');
+const watchify = require('watchify');
+const reactify = require('reactify'); 
+const gulpif = require('gulp-if');
+const uglify = require('gulp-uglify');
+const streamify = require('gulp-streamify');
+const notify = require('gulp-notify');
+const concat = require('gulp-concat');
+const cssmin = require('gulp-cssmin');
+const gutil = require('gulp-util');
+const shell = require('gulp-shell');
+const glob = require('glob');
+const livereload = require('gulp-livereload');
+const jasminePhantomJs = require('gulp-jasmine2-phantomjs');
 
-var fetcher = require('./fetcher')
-var fs = require('fs');
+const fetcher = require('./fetcher')
+const fs = require('fs');
 
 // External dependencies you do not want to rebundle while developing,
 // but include in your application deployment
@@ -185,7 +185,7 @@ gulp.task('default', function () {
   
   cssTask({
     development: true,
-    src: './styles/**/*.css',
+    src: ['./styles/variables.css','./styles/reset.css','./styles/main.css'],
     dest: './build'
   });
 
@@ -201,7 +201,7 @@ gulp.task('deploy', function () {
   
   cssTask({
     development: false,
-    src: './styles/**/*.css',
+    src: ['./styles/variables.css','./styles/reset.css','./styles/main.css'],
     dest: './dist'
   });
 

@@ -1,5 +1,224 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
 body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial;
 	background-color: #EAEAEA;
-	margin: 0 auto;
+	margin: 2.5% auto;
 	max-width: 740px;
 }
+
+#main{
+	margin: 0 auto;
+}
+
+h1{
+	font-size: 2em;
+	text-align: center;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 2%;
+  padding: 0;
+}
+ 
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+ 
+li:last-child {
+  border: none;
+}
+ 
+footer{
+	text-align: right;
+	font-size: .875em;
+}
+:root {
+  /**
+   * Color definitions.
+   */
+    --color-dark: #4c5859;
+    --color-darker: #31393a;
+    --color-darkest: #262c2c;
+    --color-neutral: #89a19d;
+    --color-light: #edeeee;
+    --color-lighter: #ffffff;
+    --color-accent: #4cb5ff;
+    --color-alert: #ffb726;
+    --color-todo: #ff00ff;
+    --color-overview-problems: #ffd480;
+    --color-overview-solutions: #80dfff;
+  /**
+   * Typography.
+   */
+    --font-body: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial;
+    --font-head: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial;
+    --font-mono: 'Source Code Pro', 'Ubuntu Mono', monospace;
+    --font-button: var(--font-body);
+    --weight-title: 200;
+    --weight-body: normal;
+    --weight-head: bold;
+    --weight-link: bold;
+    --weight-mono: 400;
+    --weight-button: bold;
+    --font-size-huge: 3rem;
+    --font-size-headline: 2.625rem;
+    --font-size-title: 1.75rem;
+    --font-size-subtitle: 1.5rem;
+    --font-size-medium: 1.25rem;
+    --font-size-body: 1rem;
+    --font-size-small: 0.875rem;
+  /**
+   * Layout
+   */
+    --layout-mobile-padding: calc(var(--layout-padding-sides) / 2);
+    --layout-padding-sides: 2.5rem;
+    --layout-nav-height: 2.2rem;
+    --layout-body-width: 67.5rem;
+    --layout-blog-list-width: 40rem;
+    --layout-vertical-padding: 5rem;
+    --layout-extra-padding: 7.5rem;
+/*(var(--layout-body-width) - (11 * var(--layout-padding-sides)) / 12)*/
+    --layout-column-width: calc((var(--layout-body-width) - (var(--layout-padding-sides) * 11)) / 12);
+    --layout-column-1: calc((var(--layout-column-width) * 1));
+    --layout-column-2: calc((var(--layout-column-width) * 2) + (var(--layout-padding-sides) * 0.9));
+    --layout-column-3: calc((var(--layout-column-width) * 3) + (var(--layout-padding-sides) * 1.9));
+    --layout-column-4: calc((var(--layout-column-width) * 4) + (var(--layout-padding-sides) * 2.9));
+    --layout-column-5: calc((var(--layout-column-width) * 5) + (var(--layout-padding-sides) * 3.9));
+    --layout-column-6: calc((var(--layout-column-width) * 6) + (var(--layout-padding-sides) * 4.9));
+    --layout-column-8: calc((var(--layout-column-width) * 8) + (var(--layout-padding-sides) * 6.9));
+    --layout-column-9: calc((var(--layout-column-width) * 9) + (var(--layout-padding-sides) * 7.9));
+  /**
+   * Z Indices
+   */
+    --z-contact-form: 999999;
+    --z-contact-background: 999998;
+    --z-main-navigation: 7;
+    --z-company-header: 6;
+    --z-feature-list: 5;
+    --z-home-blurb: 4;
+    --z-footer: 3;
+    --z-viewport: 2;
+    --z-above-globe: 1;
+    --z-globe: 0;
+}
+
+  /**
+   * Media Sizes
+   */
+
+@custom-media --small screen and (max-width: 800px);
+
+@custom-media --not-small screen and (min-width: 801px);
+
+@custom-media --not-large screen and (max-width: 1080px);
+
+@custom-media --medium screen and (min-width: 801px) and (max-width: 1081px);
+
+@custom-media --large screen and (min-width: 1081px) and (max-width: 1600px);
+
+@custom-media --extra screen and (min-width: 1601px);

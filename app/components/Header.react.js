@@ -7,7 +7,7 @@ var Header = React.createClass({
    */
   render: function() {
     return (
-      <header id="header">
+      <header>
         <h1>Top Github Repos By Programming Language</h1>
       </header>
     );

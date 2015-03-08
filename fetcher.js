@@ -1,7 +1,5 @@
-var request = require('request')
-	,	cheerio = require('cheerio')
-	;
-
+const request = require('request')
+const cheerio = require('cheerio')
 const GITHUB_URL = 'https://github.com/search?q=stars%3a%3E1&s=stars&type=Repositories'
 const DOM_SELECTOR_TOP_10_LANGS = '.filter-list .filter-item'
 const DOM_SELECTOR_TOP_10_REPOS = '.repo-list .repo-list-item'

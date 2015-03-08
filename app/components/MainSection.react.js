@@ -26,7 +26,7 @@ var MainSection = React.createClass({
 
     return (
       <section id="main">
-      	<ul>{content}</ul>
+      	<ul className="repos-list">{content}</ul>
       </section>
     )
   }

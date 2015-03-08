@@ -8,7 +8,7 @@ var App = React.createClass({
 	render: function(){
 
 		return(
-		  <div>
+			<div>
 		    <Header />
 		    <MainSection url="github_output.json" />
 		    <Footer />
