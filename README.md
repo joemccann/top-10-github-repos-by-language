@@ -2,6 +2,10 @@
 
 A wee bit of screen scraping to get the latest numbers on top 10 starred programming languages on GitHub.
 
+## IMPORTANT
+
+This project is a WIP and does not necessarily include best practices, recommended production techniques, etc.  It is simply a good project to learn React, Gulp and Browserify.
+
 ### Install
 
 * Clone the repo and `cd` into the repo's directory
