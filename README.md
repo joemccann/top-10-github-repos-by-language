@@ -4,20 +4,23 @@ A wee bit of screen scraping to get the latest numbers on top 10 starred program
 
 ### Install
 
-* Clone the repo
+* Clone the repo and `cd` into the repo's directory
 * Run `npm install`
 
 ### Development
-* Run `gulp`
-* Start a webservice in the `build` folder, f.ex. `npm i -g http-server && http-server`
-* Go to `localhost:8080` to display the app
-* Go to `localhost:8080/testrunner.html` to see your tests
+* In on terminal, run `gulp` 
+* In a separate terminal, run `npm start`
+* Go to `localhost:9599` to display the app
+* Go to `localhost:9599/testrunner.html` to see your tests
 * Any changes to `app` or `styles` folder will automatically rebuild to `build` folder
 * Both tests and application changes will refresh automatically in the browser
 * Run `gulp test` to run all tests with phantomJS and produce XML reports
 
-### Minify the code, ready for production
+### Production
 * Run `NODE_ENV=production gulp deploy`
+
+To minify the code.
+TODO:  Update this for production...
 
 ### Directory
 * **build/**: Where your automatically builds to. This is where you launch your app in development
